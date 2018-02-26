@@ -1,0 +1,28 @@
+
+<p>
+  Welcome, {{user.name}}
+</p>
+<a href = '/logout'>Logout</a>
+
+<form (submit) = 'addCity()'>
+  Add a New City<input type = 'text' name = 'city' [(ngModel)] = 'city.name'>
+  <input type = 'submit' value = 'Submit'> 
+</form>
+
+<table style="width:100%">
+<tr>
+  <th>All Cities</th>
+  <th>Creator</th>
+  <th>Action</th>
+</tr>
+  <tr *ngFor = "let city of cities let i = index" [attr.data-index]="i">
+    <td>{{city.name}}</td>
+    
+    <td>{{user.name}}</td>
+    <td><button (click) = 'delete(city._id, i)'>Delete</button>
+      <button (click) = 'showOne(city._id, i)'>Show</button>
+      <button (click) = 'Join(city._id)'>Join</button>
+      <button *ngIf = 'user.name == user.name' (click) = 'Update(city._id, i)'>Update</button>
+    </td>
+</tr>
+</table>
